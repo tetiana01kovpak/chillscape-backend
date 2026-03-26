@@ -59,20 +59,16 @@ Response:
 Deployed on Render:
 https://chillscape-backend.onrender.com
 
-## Project Structure (planned)
+## Project Structure
 
-```
-src/
-  index.js
-  app.js
-  routes/
-  controllers/
-  services/
-  models/
-  middlewares/
-  validations/
-  utils/
-  constants/
-```
-
-Structure will be implemented in the next steps.
+index.js — server entry point (express app, middleware, routes, server start)
+Folders
+routes/ — API routes
+controllers/ — request handling logic
+services/ — business logic and data processing
+models/ — database models
+middlewares/ — custom middleware (auth, error handling, etc.)
+validations/ — request validation schemas
+db/ — database connection setup (MongoDB)
+utils/ — helper functions
+constants/ — application constants
