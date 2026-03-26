@@ -2,7 +2,7 @@
 
 import Category from '../models/category.js';
 import Region from '../models/region.js';
-import LocationType from '../models/location.js';
+import LocationType from '../models/locationType.js';
 
 export const getCategoriesWithRegions = async (req, res) => {
   try {
