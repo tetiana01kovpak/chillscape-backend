@@ -72,3 +72,10 @@ validations/ — request validation schemas
 db/ — database connection setup (MongoDB)
 utils/ — helper functions
 constants/ — application constants
+
+## Git Workflow
+
+- Work in feature branches (`feature/...`, `fix/...`)
+- Do not push directly to `main`
+- Create a Pull Request for all changes
+- At least 1 approval is required before merging
