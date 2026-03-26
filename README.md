@@ -34,11 +34,10 @@ http://localhost:3000
 
 ## Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file based on `.env.example`
 
-```env
-PORT=3000
-```
+- PORT
+- MONGO_URL
 
 ## API
 
@@ -59,19 +58,23 @@ Response:
 Deployed on Render:
 https://chillscape-backend.onrender.com
 
+## Description
+
+Backend for Chillscape application (Node.js, Express, MongoDB)
+
 ## Project Structure
 
-server.js — server entry point (express app, middleware, routes, server start)
-Folders
-routes/ — API routes
-controllers/ — request handling logic
-services/ — business logic and data processing
-models/ — database models
-middlewares/ — custom middleware (auth, error handling, etc.)
-validations/ — request validation schemas
-db/ — database connection setup (MongoDB)
-utils/ — helper functions
-constants/ — application constants
+- server.js — entry point
+
+- routes/ — API routes
+- controllers/ — request handling
+- services/ — business logic
+- models/ — database models
+- middlewares/ — middleware (auth, errors)
+- validations/ — request validation
+- db/ — MongoDB connection
+- utils/ — helpers
+- constants/ — app constants
 
 ## Git Workflow
 
