@@ -2,7 +2,7 @@ import { model, Schema } from 'mongoose';
 
 const userSchema = new Schema(
   {
-    username: {
+    name: {
       type: String,
       trim: true,
     },
@@ -37,8 +37,8 @@ userSchema.methods.toJSON = function () {
 };
 
 userSchema.pre('save', function () {
-  if (!this.username) {
-    this.username = this.email;
+  if (!this.name) {
+    this.name = this.email;
   }
 });
 
