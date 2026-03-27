@@ -10,5 +10,3 @@ export const connectMongoDB = async () => {
   await mongoose.connect(mongoUrl);
   console.log('✅ MongoDB connection established successfully');
 };
-
-export default connectMongoDB;

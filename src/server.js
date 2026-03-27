@@ -21,8 +21,9 @@ await connectMongoDB();
 // middleware
 app.use(cors());
 app.use(express.json());
-app.use('/api/locations', locationRoutes);
 app.use(cookieParser());
+app.use('/api/locations', locationRoutes);
+
 
 // routes
 app.use(authRoutes);
