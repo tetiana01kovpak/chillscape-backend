@@ -1,9 +1,9 @@
-import { Location } from '../models/location.js'; 
+import { Location } from '../models/location.js';
 
 
 export const getAllLocations = async (req, res, next) => {
   try {
-    const { page = 1, limit = 9, region, type, search } = req.query;
+    const { page = 1, limit = 10, region, type, search } = req.query;
 
     const filter = {};
 
@@ -36,7 +36,7 @@ export const createLocation = async (req, res, next) => {
   try {
     const location = await Location.create({
       ...req.body,
-      createdBy: req.user._id, 
+      createdBy: req.user._id,
     });
 
     res.status(201).json(location);
