@@ -64,7 +64,7 @@ const refreshUserSession = async (req, res) => {
     refreshToken: req.cookies.refreshToken,
   });
   if (!session) {
-    throw createHttpError(401, 'Session ot found');
+    throw createHttpError(401, 'Session not found');
   }
   const now = new Date();
   const expiresAt = new Date(session.refreshTokenValidUntil);
