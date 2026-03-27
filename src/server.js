@@ -3,6 +3,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import connectMongoDB from './db/connectMongoDB.js';
+import locationRoutes from './routes/locationRoutes.js';
+
 
 import categoryRoutes from './routes/categoryRoutes.js'; // імпорт роутів категорій
 
@@ -20,6 +22,8 @@ await connectMongoDB();
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+app.use('/api/locations', locationRoutes);
+
 
 // routes
 app.use(authRoutes);
