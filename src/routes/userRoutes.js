@@ -3,7 +3,7 @@ import {
   getCurrentUserController,
   getUserByIdController,
 } from '../controllers/userController.js';
-import authenticate from '../middlewares/authenticate.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const userRoutes = express.Router();
 
