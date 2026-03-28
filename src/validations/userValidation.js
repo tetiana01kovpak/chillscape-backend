@@ -1,12 +1,12 @@
 import { Joi, Segments } from 'celebrate';
 
 // ! GET
-export const getLocationSchema = {
+export const getUserLocationsSchema = {
+  [Segments.PARAMS]: Joi.object({
+    userId: Joi.string().hex().length(24).required(),
+  }),
   [Segments.QUERY]: Joi.object({
-    page: Joi.number().integer().min(1).default(1),
-    perPage: Joi.number().integer().min(5).max(20).default(10),
-    search: Joi.string().trim().allow(''),
-    sortBy: Joi.string().valid('_id', 'name'),
-    sortOrder: Joi.string().valid('asc', 'desc'),
+    page: Joi.number().min(1).default(1),
+    limit: Joi.number().min(1).max(100).default(10),
   }),
 };

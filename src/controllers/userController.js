@@ -3,32 +3,45 @@ import { Location } from '../models/location.js';
 import { getCurrentUser, getUserById } from '../services/userService.js';
 
 // ! GET
-export const getLocations = async (req, res) => {
-  const {
-    page = 1,
-    limit = 10,
-    search,
-    sortBy = '_id',
-    sortOrder = 'asc',
-  } = req.query;
+export const getUserLocations = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const { page, limit, search, sortBy, sortOrder } = req.query;
 
-  const skip = (page - 1) * limit;
+    const skip = (page - 1) * limit;
 
-  const locationsQuery = Location.find({ userId: req.user._id });
+    const filter = {
+      createdBy: userId,
+    };
 
-  if (search) locationsQuery.where({ name: { $regex: search, $options: 'i' } });
+    if (search) {
+      filter.name = { $regex: search, $options: 'i' };
+    }
 
-  const [totalItems, locations] = await Promise.all([
-    locationsQuery.clone().countDocuments(),
-    locationsQuery
-      .skip(skip)
-      .limit(limit)
-      .sort({ [sortBy]: sortOrder }),
-  ]);
+    const [totalItems, locations] = await Promise.all([
+      Location.countDocuments(filter),
+      Location.find(filter)
+        .skip(skip)
+        .limit(limit)
+        .sort({ [sortBy]: sortOrder === 'asc' ? 1 : -1 }),
+    ]);
 
-  const totalPages = Math.ceil(totalItems / limit);
+    const totalPages = Math.ceil(totalItems / limit);
 
-  res.status(200).json({ page, limit, totalItems, totalPages, locations });
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully fetched user locations',
+      data: {
+        page,
+        limit,
+        totalItems,
+        totalPages,
+        locations,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const getCurrentUserController = async (req, res, next) => {

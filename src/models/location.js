@@ -1,13 +1,13 @@
 // / Library
 import { Schema, model } from 'mongoose';
 
-const locationSchema = new mongoose.Schema({
+const locationSchema = new Schema({
   name: { type: String, required: true, trim: true },
   type: { type: String, required: true, maxlength: 64 },
   region: { type: String, required: true, maxlength: 64 },
   description: { type: String, required: true, minlength: 20, maxlength: 6000 },
   images: [{ type: String, required: true }],
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 }, { timestamps: true });
 
 locationSchema.index(
