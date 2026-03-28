@@ -10,6 +10,6 @@ const userRoutes = express.Router();
 
 userRoutes.get('/current', authenticate, getCurrentUserController);
 userRoutes.get('/:userId', getUserByIdController);
-userRoutes.patch('/api/users', authenticate, updateUserController);
+userRoutes.patch('/', authenticate, updateUserController);
 
 export default userRoutes;
