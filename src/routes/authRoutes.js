@@ -25,6 +25,6 @@ router.post(
 );
 router.post('/auth/login', celebrate(loginUserSchema), asyncHandler(loginUser));
 router.post('/auth/logout', asyncHandler(logoutUser));
-router.post('/auth/refresh', refreshUserSession);
+router.post('/auth/refresh', asyncHandler(refreshUserSession));
 
 export default router;
