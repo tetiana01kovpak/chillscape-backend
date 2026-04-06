@@ -20,6 +20,7 @@ const locationSchema = new Schema(
     },
     images: [{ type: String, required: true }],
     ownerId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    rate: { type: Number, default: 0 },
 
     feedbacksId: [
       {

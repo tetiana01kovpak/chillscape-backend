@@ -112,6 +112,15 @@ export const createFeedback = async (req, res, next) => {
       $push: { feedbacksId: feedback._id },
     });
 
+    const allFeedbacks = await Feedback.find({ place: req.body.place })
+      .select('rate')
+      .lean();
+    const avgRating =
+      allFeedbacks.reduce((sum, f) => sum + f.rate, 0) / allFeedbacks.length;
+    await Location.findByIdAndUpdate(req.body.place, {
+      $set: { rate: Math.round(avgRating * 10) / 10 },
+    });
+
     const location = await Location.findById(req.body.place)
       .select('locationType')
       .lean();
